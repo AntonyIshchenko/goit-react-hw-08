@@ -1,9 +1,10 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
+import FormInput from '../FormInput/FormInput';
 import { useId } from 'react';
 import css from './ContactForm.module.css';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactsOps';
+import { addContact } from '../../redux/contacts/operations';
 
 // const phoneRegExp =
 //   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -61,23 +62,5 @@ export default function ContactForm() {
         </button>
       </Form>
     </Formik>
-  );
-}
-
-function FormInput({ id, type, name, placeholder = '', children }) {
-  return (
-    <div className={css.fieldContainer}>
-      <label htmlFor={id}>{children}</label>
-      <Field
-        type={type}
-        name={name}
-        id={id}
-        placeholder={placeholder}
-        className={css.input}
-      ></Field>
-      <span className={css.error}>
-        <ErrorMessage name={name} as="span" />
-      </span>
-    </div>
   );
 }
