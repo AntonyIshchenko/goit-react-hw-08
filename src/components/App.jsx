@@ -12,6 +12,8 @@ const HomePage = lazy(() => import('../pages/Home'));
 const RegistrationPage = lazy(() => import('../pages/Registration'));
 const LoginPage = lazy(() => import('../pages/Login'));
 const ContactsPage = lazy(() => import('../pages/Contacts'));
+const ProfilePage = lazy(() => import('../pages/Profile'));
+const UpdateProfilePage = lazy(() => import('../pages/UpdateProfile'));
 
 export default function App() {
   const isRefreshing = useSelector(selectIsRefreshing);
@@ -52,6 +54,21 @@ export default function App() {
               element={
                 <PrivateRoute
                   component={<ContactsPage />}
+                  redirectTo="/login"
+                />
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <PrivateRoute component={<ProfilePage />} redirectTo="/login" />
+              }
+            />
+            <Route
+              path="/profile/update"
+              element={
+                <PrivateRoute
+                  component={<UpdateProfilePage />}
                   redirectTo="/login"
                 />
               }
